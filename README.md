@@ -2,8 +2,8 @@
 
 ## Index
 
-- [Setup local kubernetes cluster](setup-local-kubernetes-cluster)
-- [Install prerequisites](install-prerequisites)
+- [Setup local kubernetes cluster](#setup-local-kubernetes-cluster)
+- [Install prerequisites](#install-prerequisites)
 
 ### Setup local kubernetes cluster
 

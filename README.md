@@ -1,5 +1,10 @@
 # magma-local
 
+## Index
+
+- [Setup local kubernetes cluster](setup-local-kubernetes-cluster)
+- [Install prerequisites](install-prerequisites)
+
 ### Setup local kubernetes cluster
 
 start a local kind kubernetes cluster:

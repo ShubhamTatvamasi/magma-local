@@ -14,8 +14,8 @@ kind create cluster
 download magma docker images:
 ```bash
 docker pull magmacore/nginx:1.4.0
-docker pull magmacore/controller:1.4.0
 docker pull magmacore/magmalte:1.4.0
+docker pull magmacore/controller:1.4.0
 ```
 
 load magma images on kind:

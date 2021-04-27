@@ -16,6 +16,8 @@ download magma docker images:
 docker pull magmacore/nginx:1.4.0
 docker pull magmacore/magmalte:1.4.0
 docker pull magmacore/controller:1.4.0
+
+docker pull shubhamtatvamasi/nginx:magma-master-certs.0.1.0
 ```
 
 load magma images on kind:
@@ -23,6 +25,8 @@ load magma images on kind:
 kind load docker-image magmacore/nginx:1.4.0
 kind load docker-image magmacore/magmalte:1.4.0
 kind load docker-image magmacore/controller:1.4.0
+
+kind load docker-image shubhamtatvamasi/nginx:magma-master-certs.0.1.0
 ```
 
 check if all the images are successfully loaded on kind cluster:
@@ -73,15 +77,40 @@ Go to orc8r helm repo directory:
 cd ${MAGMA_ROOT}/orc8r/cloud/helm/orc8r/
 ```
 
-Install postgresql:
+Install postgresql and mysql:
 ```bash
+helm install mysql bitnami/mysql \
+  --set auth.rootPassword=password
+
 helm install postgresql bitnami/postgresql \
   --set postgresqlPassword=postgres \
   --set postgresqlDatabase=magma \
   --set fullnameOverride=postgresql
 ```
 
+update schema for magma:
+```bash
+kubectl exec -it mysql-0 -- mysql -u root --password=password < db_setup.sql
+```
+
+install orc8r and NMS:
 ```bash
 helm install orc8r .
+```
+
+create new user:
+```bash
+export ORC_POD=$(kubectl get pod -l app.kubernetes.io/component=orchestrator -o jsonpath='{.items[0].metadata.name}')
+export NMS_POD=$(kubectl get pod -l app.kubernetes.io/component=magmalte -o jsonpath='{.items[0].metadata.name}')
+
+kubectl exec -it ${ORC_POD} -- envdir /var/opt/magma/envdir /var/opt/magma/bin/accessc add-existing -admin -cert /var/opt/magma/certs/admin-operator/tls.crt admin_operator
+kubectl exec -it ${NMS_POD} -- yarn setAdminPassword master admin admin
+```
+
+install lte network:
+```bash
+helm upgrade -i lte-orc8r magma-charts-140/lte-orc8r \
+  --set controller.image.repository=magmacore/controller \
+  --set controller.image.tag=1.4.0
 ```
 

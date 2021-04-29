@@ -18,6 +18,11 @@ docker pull magmacore/magmalte:1.4.0
 docker pull magmacore/controller:1.4.0
 
 docker pull shubhamtatvamasi/nginx:magma-master-certs.0.1.0
+
+# These will be used in future:
+docker pull docker.artifactory.magmacore.org/nginx:1.5.0
+docker pull docker.artifactory.magmacore.org/magmalte:1.5.0
+docker pull docker.artifactory.magmacore.org/controller:1.5.0
 ```
 
 load magma images on kind:
@@ -27,6 +32,8 @@ kind load docker-image magmacore/magmalte:1.4.0
 kind load docker-image magmacore/controller:1.4.0
 
 kind load docker-image shubhamtatvamasi/nginx:magma-master-certs.0.1.0
+kind load docker-image docker.artifactory.magmacore.org/magmalte:1.5.0
+kind load docker-image docker.artifactory.magmacore.org/controller:1.5.0
 ```
 
 check if all the images are successfully loaded on kind cluster:
@@ -60,8 +67,20 @@ kubectl create ns orc8r
 kubens orc8r
 ```
 
+Install postgresql and mysql:
+```bash
+helm install mysql bitnami/mysql \
+  --set auth.rootPassword=password
+
+helm install postgresql bitnami/postgresql \
+  --set postgresqlPassword=postgres \
+  --set postgresqlDatabase=magma \
+  --set fullnameOverride=postgresql
+```
+
 create a soft-link for orc8rlib:
 ```bash
+export MAGMA_ROOT=$PWD
 cd ${MAGMA_ROOT}/orc8r/cloud/helm/orc8r/charts/
 ln -s ${MAGMA_ROOT}/orc8r/cloud/helm/orc8rlib orc8rlib
 ```
@@ -72,20 +91,10 @@ helm dependency update
 ```
 > no need if you have created soft-link for orc8rlib.
 
+
 Go to orc8r helm repo directory:
 ```bash
 cd ${MAGMA_ROOT}/orc8r/cloud/helm/orc8r/
-```
-
-Install postgresql and mysql:
-```bash
-helm install mysql bitnami/mysql \
-  --set auth.rootPassword=password
-
-helm install postgresql bitnami/postgresql \
-  --set postgresqlPassword=postgres \
-  --set postgresqlDatabase=magma \
-  --set fullnameOverride=postgresql
 ```
 
 update schema for magma:
@@ -109,7 +118,11 @@ kubectl exec -it ${NMS_POD} -- yarn setAdminPassword master admin admin
 
 install lte network:
 ```bash
-helm upgrade -i lte-orc8r magma-charts-140/lte-orc8r \
+cd ${MAGMA_ROOT}/lte/cloud/helm/lte-orc8r
+mkdir -p charts
+ln -s ${MAGMA_ROOT}/orc8r/cloud/helm/orc8rlib charts/orc8rlib
+
+helm upgrade -i lte-orc8r . \
   --set controller.image.repository=magmacore/controller \
   --set controller.image.tag=1.4.0
 ```

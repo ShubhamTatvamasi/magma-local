@@ -2,6 +2,7 @@
 
 - [Setup local kubernetes cluster](#setup-local-kubernetes-cluster)
 - [Install prerequisites](#install-prerequisites)
+- [Do prerequisites](#do-prerequisites)
 - [Install Orc8r](#install-orc8r)
 
 ### Setup local kubernetes cluster
@@ -32,6 +33,7 @@ kind load docker-image magmacore/magmalte:1.4.0
 kind load docker-image magmacore/controller:1.4.0
 
 kind load docker-image shubhamtatvamasi/nginx:magma-master-certs.0.1.0
+
 kind load docker-image docker.artifactory.magmacore.org/magmalte:1.5.0
 kind load docker-image docker.artifactory.magmacore.org/controller:1.5.0
 ```
@@ -57,7 +59,7 @@ helm install cert-manager jetstack/cert-manager \
   --set installCRDs=true
 ```
 
-### Install Orc8r
+### Do prerequisites
 
 create new namespace:
 ```bash
@@ -78,33 +80,29 @@ helm install postgresql bitnami/postgresql \
   --set fullnameOverride=postgresql
 ```
 
+update schema for magma:
+```bash
+kubectl exec -it mysql-0 -- mysql -u root --password=password < db_setup.sql
+```
+
+### Install Orc8r
+
 create a soft-link for orc8rlib:
 ```bash
 export MAGMA_ROOT=$PWD
-cd ${MAGMA_ROOT}/orc8r/cloud/helm/orc8r/charts/
-ln -s ${MAGMA_ROOT}/orc8r/cloud/helm/orc8rlib orc8rlib
+ln -s ${MAGMA_ROOT}/orc8r/cloud/helm/orc8rlib \
+  ${MAGMA_ROOT}/orc8r/cloud/helm/orc8r/charts/orc8rlib
 ```
-
-update orc8r dependencies:
-```bash
-helm dependency update
-```
-> no need if you have created soft-link for orc8rlib.
-
+> Or do `helm dependency update` on orc8r helm chart folders
 
 Go to orc8r helm repo directory:
 ```bash
 cd ${MAGMA_ROOT}/orc8r/cloud/helm/orc8r/
 ```
 
-update schema for magma:
-```bash
-kubectl exec -it mysql-0 -- mysql -u root --password=password < db_setup.sql
-```
-
 install orc8r and NMS:
 ```bash
-helm install orc8r .
+helm upgrade -i orc8r .
 ```
 
 create new user:

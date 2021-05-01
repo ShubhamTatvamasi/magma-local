@@ -114,14 +114,64 @@ kubectl exec -it ${ORC_POD} -- envdir /var/opt/magma/envdir /var/opt/magma/bin/a
 kubectl exec -it ${NMS_POD} -- yarn setAdminPassword master admin admin
 ```
 
-install lte network:
+---
+
+### Install components:
+
+Install lte-orc8r:
 ```bash
 cd ${MAGMA_ROOT}/lte/cloud/helm/lte-orc8r
 mkdir -p charts
 ln -s ${MAGMA_ROOT}/orc8r/cloud/helm/orc8rlib charts/orc8rlib
 
 helm upgrade -i lte-orc8r . \
-  --set controller.image.repository=magmacore/controller \
-  --set controller.image.tag=1.4.0
+  --set controller.image.repository=docker.artifactory.magmacore.org/controller \
+  --set controller.image.tag=1.5.0
 ```
+
+Install feg-orc8r:
+```bash
+cd ${MAGMA_ROOT}/feg/cloud/helm/feg-orc8r
+mkdir -p charts
+ln -s ${MAGMA_ROOT}/orc8r/cloud/helm/orc8rlib charts/orc8rlib
+
+helm upgrade -i feg-orc8r . \
+  --set controller.image.repository=docker.artifactory.magmacore.org/controller \
+  --set controller.image.tag=1.5.0
+```
+
+Install fbinternal-orc8r:
+```bash
+cd ${MAGMA_ROOT}/fbinternal/cloud/helm/fbinternal-orc8r
+mkdir -p charts
+ln -s ${MAGMA_ROOT}/orc8r/cloud/helm/orc8rlib charts/orc8rlib
+
+helm upgrade -i fbinternal-orc8r . \
+  --set controller.image.repository=docker.artifactory.magmacore.org/controller \
+  --set controller.image.tag=1.5.0
+```
+
+Install wifi-orc8r:
+```bash
+cd ${MAGMA_ROOT}/wifi/cloud/helm/wifi-orc8r
+mkdir -p charts
+ln -s ${MAGMA_ROOT}/orc8r/cloud/helm/orc8rlib charts/orc8rlib
+
+helm upgrade -i wifi-orc8r . \
+  --set controller.image.repository=docker.artifactory.magmacore.org/controller \
+  --set controller.image.tag=1.5.0
+```
+
+Install: cwf-orc8r
+```bash
+cd ${MAGMA_ROOT}/cwf/cloud/helm/cwf-orc8r
+mkdir -p charts
+ln -s ${MAGMA_ROOT}/orc8r/cloud/helm/orc8rlib charts/orc8rlib
+
+helm upgrade -i cwf-orc8r . \
+  --set controller.image.repository=docker.artifactory.magmacore.org/controller \
+  --set controller.image.tag=1.5.0
+```
+
+
 

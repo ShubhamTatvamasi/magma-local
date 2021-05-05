@@ -14,8 +14,14 @@ loadBalancer_services=(
 )
 
 for svc in "${!loadBalancer_services[@]}"
-do 
+do
+
   service_ip="$(kubectl get svc ${svc} \
     -o jsonpath='{.status.loadBalancer.ingress[0].ip}')"
   echo ${service_ip} ${loadBalancer_services[${svc}]}.${DOMAIN_NAME}
+
+  if [[ "${svc}" == "nginx-proxy" ]]; then
+    echo ${service_ip} magma-test.nms.${DOMAIN_NAME}
+  fi
+
 done

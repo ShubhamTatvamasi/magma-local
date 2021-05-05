@@ -8,20 +8,20 @@ helm repo add jetstack https://charts.jetstack.io
 helm repo update
 ```
 
-create new namespace:
-```bash
-kubectl create ns orc8r
-
-# switch namespace to orc8r
-kubens orc8r
-```
-
 Install cert-manager:
 ```bash
 helm install cert-manager jetstack/cert-manager \
   --create-namespace \
   --namespace cert-manager \
   --set installCRDs=true
+```
+
+create new namespace:
+```bash
+kubectl create ns orc8r
+
+# switch namespace to orc8r
+kubens orc8r
 ```
 
 Install mysql and postgresql:

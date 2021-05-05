@@ -19,7 +19,8 @@ orc8r_helm_charts=(
 helm upgrade -i orc8r orc8r/cloud/helm/orc8r \
   --set nginx.image.repository=shubhamtatvamasi/nginx \
   --set nginx.image.tag=magma-master-certs.0.1.0 \
-  --set metrics.enabled=false
+  --set metrics.enabled=false \
+  --set certs.domainName=magma
 
 for orc8r_chart in "${!orc8r_helm_charts[@]}"
 do 

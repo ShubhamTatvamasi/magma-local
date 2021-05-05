@@ -26,3 +26,6 @@ Magma domains:
 172.22.255.200 api.magma
 ```
 
+https://master.nms.magma
+https://magma-test.nms.magma
+

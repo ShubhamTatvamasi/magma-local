@@ -12,6 +12,8 @@ start a local kind kubernetes cluster:
 kind create cluster
 ```
 
+Also enable [LoadBalancer](https://kind.sigs.k8s.io/docs/user/loadbalancer/) for Kind cluster.
+
 download magma docker images:
 ```bash
 docker pull magmacore/nginx:1.4.0

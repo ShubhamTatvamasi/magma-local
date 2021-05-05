@@ -1,12 +1,22 @@
 # magma-local
 
-### Install Orc8r
-
-Go to orc8r helm repo directory:
+Update your local IPs
 ```bash
-cd ${MAGMA_ROOT}
-./generate-softlinks.sh
-./install-orc8r.sh
-./generate-dns.sh
-./create-user.sh
+sudo vim /etc/hosts
 ```
+---
+
+### Access NMS
+
+https://magma-test.nms.magma
+
+ID: admin
+
+Pass: admin
+
+---
+
+### Swagger API
+
+https://api.magma/swagger/v1/ui/
+

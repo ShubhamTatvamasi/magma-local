@@ -8,7 +8,7 @@ sudo vim /etc/hosts
 
 ### Access NMS
 
-https://magma-test.nms.magma
+https://magma-test.nms.magmalocal.com
 
 ID: admin
 
@@ -18,5 +18,9 @@ Pass: admin
 
 ### Swagger API
 
-https://api.magma/swagger/v1/ui/
+Add `admin_operator.pfx` file on your browser for accessing swagger API.
+
+chrome://settings/certificates
+
+https://api.magmalocal.com/swagger/v1/ui/
 

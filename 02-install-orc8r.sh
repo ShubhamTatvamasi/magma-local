@@ -5,6 +5,7 @@ set -e
 export MAGMA_ROOT="${PWD}"
 export CONTROLLER_IMAGE="docker.artifactory.magmacore.org/controller"
 export CONTROLLER_TAG="1.5.0"
+export DOMAIN_NAME=magmalocal.com
 
 declare -A orc8r_helm_charts
 
@@ -20,7 +21,8 @@ helm upgrade -i orc8r orc8r/cloud/helm/orc8r \
   --set nginx.image.repository=shubhamtatvamasi/nginx \
   --set nginx.image.tag=magma-master-certs.0.1.0 \
   --set metrics.enabled=false \
-  --set certs.domainName=magma
+  --set certs.domainName=${DOMAIN_NAME} \
+  --set nginx.spec.hostname=controller.${DOMAIN_NAME}
 
 for orc8r_chart in "${!orc8r_helm_charts[@]}"
 do 

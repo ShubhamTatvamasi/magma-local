@@ -2,7 +2,7 @@
 
 set -e
 
-DOMAIN_NAME=magma
+export DOMAIN_NAME=magmalocal.com
 
 declare -A loadBalancer_services
 

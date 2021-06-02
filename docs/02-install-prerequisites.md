@@ -27,12 +27,16 @@ kubens orc8r
 Install mysql and postgresql:
 ```bash
 helm install mysql bitnami/mysql \
-  --set auth.rootPassword=password
+  --set auth.rootPassword=password \
+  --set primary.livenessProbe.enabled=false \
+  --set primary.readinessProbe.enabled=false
 
 helm install postgresql bitnami/postgresql \
   --set postgresqlPassword=postgres \
   --set postgresqlDatabase=magma \
-  --set fullnameOverride=postgresql
+  --set fullnameOverride=postgresql \
+  --set livenessProbe.enabled=false \
+  --set readinessProbe.enabled=false
 ```
 
 update schema for magma:

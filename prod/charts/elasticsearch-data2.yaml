@@ -1,0 +1,23 @@
+esJavaOpts: -Xmx4G -Xms4G
+imageTag: 7.12.0
+minimumMasterNodes: 1
+nodeGroup: data2
+replicas: 1
+resources:
+  limits:
+    memory: 8Gi
+roles:
+  data: "true"
+  ingest: "true"
+  master: "false"
+  ml: "false"
+  remote_cluster_client: "false"
+readinessProbe:
+  initialDelaySeconds: 600
+volumeClaimTemplate:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 50Gi
+  storageClassName: nfs

@@ -7,6 +7,7 @@ export DOMAIN_NAME=magmalocal.com
 declare -A loadBalancer_services
 
 loadBalancer_services=( 
+  [fluentd]="fluentd"
   [nginx-proxy]="master.nms"
   [orc8r-nginx-proxy]="api"
   [orc8r-clientcert-nginx]="controller"

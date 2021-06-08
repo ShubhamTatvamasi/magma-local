@@ -5,6 +5,10 @@ nodeGroup: data
 replicas: 1
 resources:
   limits:
+    cpu: "1"
+    memory: 8Gi
+  requests:
+    cpu: "1"
     memory: 8Gi
 roles:
   data: "true"
@@ -19,5 +23,5 @@ volumeClaimTemplate:
   - ReadWriteOnce
   resources:
     requests:
-      storage: 50Gi
+      storage: 20Gi
   storageClassName: nfs

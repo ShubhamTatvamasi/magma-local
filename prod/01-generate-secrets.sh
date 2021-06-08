@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 
-domain=$1
+if [ -z "$1" ]
+then
+  domain=magmalocal.com
+else
+  domain=$1
+fi
 
 echo ""
 echo "################"

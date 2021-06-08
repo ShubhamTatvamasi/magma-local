@@ -9,16 +9,13 @@ helm repo update
 
 install fluentd:
 ```bash
-cat fluentd.yaml | \
-  sed 's/fluentd.magmalocal.com/fluentd.prod.magmalocal.com/' | \
-  helm upgrade -i fluentd stable/fluentd -f -
+helm upgrade -i fluentd stable/fluentd -f fluentd.yaml
 ```
 
 install elasticsearch:
 ```bash
-cat elasticsearch-master.yaml | \
-  sed 's/elasticsearch.magmalocal.com/elasticsearch.prod.magmalocal.com/' | \
-  helm upgrade -i elasticsearch-master elastic/elasticsearch -f -
+helm upgrade -i elasticsearch-master elastic/elasticsearch \
+  -f elasticsearch-master.yaml
 
 helm upgrade -i elasticsearch-data elastic/elasticsearch \
   -f elasticsearch-data.yaml

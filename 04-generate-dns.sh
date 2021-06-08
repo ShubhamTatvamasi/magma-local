@@ -2,7 +2,12 @@
 
 set -e
 
-export DOMAIN_NAME=magmalocal.com
+if [ -z "$1" ]
+then
+  DOMAIN_NAME=magmalocal.com
+else
+  DOMAIN_NAME=$1
+fi
 
 declare -A loadBalancer_services
 

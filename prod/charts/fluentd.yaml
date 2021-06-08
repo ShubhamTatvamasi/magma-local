@@ -86,8 +86,6 @@ rbac:
   create: false
 replicaCount: 2
 service:
-  annotations:
-    external-dns.alpha.kubernetes.io/hostname: fluentd.magmalocal.com
   ports:
   - containerPort: 24224
     name: forward

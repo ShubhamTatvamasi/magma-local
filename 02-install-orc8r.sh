@@ -2,10 +2,9 @@
 
 set -e
 
-export MAGMA_ROOT="${PWD}"
-export CONTROLLER_IMAGE="docker.artifactory.magmacore.org/controller"
-export CONTROLLER_TAG="1.5.0"
-export DOMAIN_NAME=magmalocal.com
+CONTROLLER_IMAGE="docker.artifactory.magmacore.org/controller"
+CONTROLLER_TAG="1.5.0"
+DOMAIN_NAME=magmalocal.com
 
 declare -A orc8r_helm_charts
 

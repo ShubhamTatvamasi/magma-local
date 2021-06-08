@@ -2,8 +2,8 @@
 
 set -e
 
-export MAGMA_ROOT="${PWD}"
-export ORC8R_LIB_PATH="${MAGMA_ROOT}/orc8r/cloud/helm/orc8rlib"
+MAGMA_ROOT="${PWD}"
+ORC8R_LIB_PATH="${MAGMA_ROOT}/orc8r/cloud/helm/orc8rlib"
 
 declare -A orc8r_helm_charts
 

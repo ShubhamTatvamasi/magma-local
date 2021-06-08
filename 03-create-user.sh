@@ -2,11 +2,11 @@
 
 set -e
 
-export ORC_POD=$(kubectl get pod \
+ORC_POD=$(kubectl get pod \
   -l app.kubernetes.io/component=orchestrator \
   -o jsonpath='{.items[0].metadata.name}')
 
-export NMS_POD=$(kubectl get pod \
+NMS_POD=$(kubectl get pod \
   -l app.kubernetes.io/component=magmalte \
   -o jsonpath='{.items[0].metadata.name}')
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-CONTROLLER_IMAGE="docker.artifactory.magmacore.org/controller"
-CONTROLLER_TAG="1.5.0"
+CONTROLLER_IMAGE="magmacore/controller"
+CONTROLLER_TAG="1.5.1"
 
 orc8r_helm_charts=("lte" "feg" "cwf" "wifi" "fbinternal")
 

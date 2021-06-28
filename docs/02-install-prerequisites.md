@@ -34,7 +34,6 @@ helm install mysql bitnami/mysql \
 helm install postgresql bitnami/postgresql \
   --set postgresqlPassword=postgres \
   --set postgresqlDatabase=magma \
-  --set fullnameOverride=postgresql \
   --set livenessProbe.enabled=false \
   --set readinessProbe.enabled=false
 ```

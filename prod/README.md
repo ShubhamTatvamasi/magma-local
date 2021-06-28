@@ -21,18 +21,18 @@ EOF
 generate secrets:
 ```bash
 mkdir -p certs && cd certs
-../generate-secrets.sh magmalocal.com
+../01-generate-secrets.sh magmalocal.com
 ```
 
 add orc8r secrets repo:
 ```bash
-helm repo add magma-charts-150 https://shubhamtatvamasi.github.io/magma-charts-150
+helm repo add magma-charts-152 https://shubhamtatvamasi.github.io/magma-charts-152
 helm repo update
 ```
 
 create orc8r secret:
 ```bash
-helm template orc8r magma-charts-150/secrets \
+helm template orc8r magma-charts-152/secrets \
   --set secret.certs.enabled=true \
   --set-file secret.certs.files."rootCA\.pem"=rootCA.pem \
   --set-file secret.certs.files."rootCA\.key"=rootCA.key \
@@ -67,7 +67,7 @@ helm repo update
 install orc8r:
 ```bash
 helm upgrade -i orc8r orc8r/orc8r -f values.yaml \
-  --version=1.5.21 \
+  --version=1.5.23 \
   --set nginx.spec.hostname=controller.magmalocal.com
 ```
 

@@ -23,5 +23,5 @@ volumeClaimTemplate:
   - ReadWriteOnce
   resources:
     requests:
-      storage: 20Gi
+      storage: 50Gi
   storageClassName: nfs

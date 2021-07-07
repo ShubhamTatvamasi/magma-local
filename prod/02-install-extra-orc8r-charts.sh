@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 CONTROLLER_IMAGE="magmacore/controller"
-CONTROLLER_TAG="1.5.2"
-HELM_REPO="magma-charts-152"
+CONTROLLER_TAG="1.6.0"
+HELM_REPO="orc8r"
 
 orc8r_helm_charts=("lte" "feg" "cwf" "wifi" "fbinternal")
 

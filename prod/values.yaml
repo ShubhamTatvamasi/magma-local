@@ -2,7 +2,7 @@ nms:
   magmalte:
     image:
       repository: magmacore/magmalte
-      tag: 1.5.2
+      tag: 1.6.0
       pullPolicy: IfNotPresent
 
     env:
@@ -24,7 +24,7 @@ nms:
 nginx:
   image:
     repository: magmacore/nginx
-    tag: 1.5.2
+    tag: 1.6.0
 
   spec:
     hostname:
@@ -35,7 +35,7 @@ nginx:
 controller:
   image:
     repository: magmacore/controller
-    tag: 1.5.2
+    tag: 1.6.0
 
 metrics:
   prometheus:

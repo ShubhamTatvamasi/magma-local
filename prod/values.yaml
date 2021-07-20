@@ -39,10 +39,12 @@ controller:
 
 metrics:
   prometheus:
+    includeOrc8rAlerts: true
     create: true
 
   prometheusCache:
     create: true
+    limit: 500000
 
   prometheusConfigurer:
     create: true

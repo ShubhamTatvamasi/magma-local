@@ -73,19 +73,26 @@ metrics:
             claimName: promdata
 
   userGrafana:
+    image:
+      tag: 6.7.6
+
     volumes:
       datasources:
-        persistentVolumeClaim:
-          claimName: grafanadatasources
+        volumeSpec:
+          persistentVolumeClaim:
+            claimName: grafanadatasources
 
       dashboardproviders:
-        persistentVolumeClaim:
-          claimName: grafanaproviders
+        volumeSpec:
+          persistentVolumeClaim:
+            claimName: grafanaproviders
 
       dashboards:
-        persistentVolumeClaim:
-          claimName: grafanadashboards
+        volumeSpec:
+          persistentVolumeClaim:
+            claimName: grafanadashboards
 
       grafanaData:
-        persistentVolumeClaim:
-          claimName: grafanadata
+        volumeSpec:
+          persistentVolumeClaim:
+            claimName: grafanadata

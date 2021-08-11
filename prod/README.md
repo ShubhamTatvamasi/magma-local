@@ -39,6 +39,7 @@ helm template orc8r magma-charts-152/secrets \
   --set-file secret.certs.files."controller\.crt"=controller.crt \
   --set-file secret.certs.files."controller\.key"=controller.key \
   --set-file secret.certs.files."admin_operator\.pem"=admin_operator.pem \
+  --set-file secret.certs.files."admin_operator\.pfx"=admin_operator.pfx \
   --set-file secret.certs.files."admin_operator\.key\.pem"=admin_operator.key.pem \
   --set-file secret.certs.files."fluentd\.pem"=fluentd.pem \
   --set-file secret.certs.files."fluentd\.key"=fluentd.key \

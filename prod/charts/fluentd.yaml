@@ -84,7 +84,7 @@ output:
   scheme: http
 rbac:
   create: false
-replicaCount: 2
+replicaCount: 1
 service:
   ports:
   - containerPort: 24224

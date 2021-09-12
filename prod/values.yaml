@@ -22,8 +22,6 @@ nms:
     certs: orc8r-secrets-certs
 
 nginx:
-  podDisruptionBudget:
-    enabled: true
 
   image:
     repository: magmacore/nginx
@@ -36,8 +34,6 @@ nginx:
     type: LoadBalancer
 
 controller:
-  podDisruptionBudget:
-    enabled: true
 
   image:
     repository: magmacore/controller

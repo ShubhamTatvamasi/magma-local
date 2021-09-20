@@ -5,10 +5,10 @@ nodeGroup: data
 replicas: 1
 resources:
   limits:
-    cpu: "1"
+    cpu: "2"
     memory: 9Gi
   requests:
-    cpu: "1"
+    cpu: "2"
     memory: 5Gi
 roles:
   data: "true"

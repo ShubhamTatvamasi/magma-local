@@ -5,10 +5,10 @@ replicas: 1
 resources:
   limits:
     cpu: "2"
-    memory: 4Gi
+    memory: 9Gi
   requests:
     cpu: "2"
-    memory: 4Gi
+    memory: 3Gi
 roles:
   data: "false"
   ingest: "false"

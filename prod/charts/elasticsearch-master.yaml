@@ -5,7 +5,7 @@ replicas: 1
 resources:
   limits:
     cpu: "2"
-    memory: 9Gi
+    memory: 5Gi
   requests:
     cpu: "2"
     memory: 3Gi

@@ -23,7 +23,6 @@ volumeClaimTemplate:
   resources:
     requests:
       storage: 1Gi
-  storageClassName: nfs
 replicas: 1
 minimumMasterNodes: 1
 rbac:

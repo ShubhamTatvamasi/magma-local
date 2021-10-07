@@ -5,7 +5,7 @@ metadata:
   name: grafanadashboards
 spec:
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   resources:
     requests:
       storage: 2Gi
@@ -16,7 +16,7 @@ metadata:
   name: grafanadata
 spec:
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   resources:
     requests:
       storage: 2Gi
@@ -27,7 +27,7 @@ metadata:
   name: grafanadatasources
 spec:
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   resources:
     requests:
       storage: 100M
@@ -38,7 +38,7 @@ metadata:
   name: grafanaproviders
 spec:
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   resources:
     requests:
       storage: 100M
@@ -49,7 +49,7 @@ metadata:
   name: openvpn
 spec:
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   resources:
     requests:
       storage: 2M
@@ -60,7 +60,7 @@ metadata:
   name: promcfg
 spec:
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   resources:
     requests:
       storage: 1Gi
@@ -71,7 +71,7 @@ metadata:
   name: promdata
 spec:
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   resources:
     requests:
       storage: 64Gi

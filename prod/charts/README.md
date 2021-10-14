@@ -23,6 +23,7 @@ helm upgrade -i elasticsearch elastic/elasticsearch \
 Helm Chart | Source
 ---|---
 fluentd | https://github.com/magma/magma/blob/master/orc8r/cloud/deploy/terraform/orc8r-helm-aws/logging.tf
+elasticsearch | https://github.com/magma/magma/blob/master/orc8r/cloud/deploy/terraform/orc8r-aws/efk.tf
 
 
 ### OLD

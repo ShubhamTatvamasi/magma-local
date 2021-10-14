@@ -17,8 +17,15 @@ helm upgrade -i elasticsearch elastic/elasticsearch \
   --set antiAffinity=soft
 ```
 
-### OLD
 
+### Research
+
+Helm Chart | Source
+---|---
+fluentd | https://github.com/magma/magma/blob/master/orc8r/cloud/deploy/terraform/orc8r-helm-aws/logging.tf
+
+
+### OLD
 
 install fluentd:
 ```bash

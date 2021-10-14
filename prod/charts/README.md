@@ -7,6 +7,15 @@ helm repo add elastic https://helm.elastic.co
 helm repo update
 ```
 
+Install elasticsearch:
+```bash
+helm upgrade -i elasticsearch elastic/elasticsearch \
+  --set replicas=1
+```
+
+### OLD
+
+
 install fluentd:
 ```bash
 helm upgrade -i fluentd stable/fluentd -f fluentd.yaml

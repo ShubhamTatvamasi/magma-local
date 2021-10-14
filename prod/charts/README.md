@@ -10,7 +10,11 @@ helm repo update
 Install elasticsearch:
 ```bash
 helm upgrade -i elasticsearch elastic/elasticsearch \
-  --set replicas=1
+  --set replicas=1 \
+  --set rbac.create=true \
+  --set roles.ml=false \
+  --set roles.remote_cluster_client=false \
+  --set antiAffinity=soft
 ```
 
 ### OLD

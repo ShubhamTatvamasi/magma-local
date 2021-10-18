@@ -23,6 +23,8 @@ nms:
 
 nginx:
 
+  replicas: 1
+
   image:
     repository: magmacore/nginx
     tag: 1.6.0
@@ -34,6 +36,8 @@ nginx:
     type: LoadBalancer
 
 controller:
+
+  replicas: 1
 
   image:
     repository: magmacore/controller

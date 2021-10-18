@@ -7,6 +7,11 @@ helm repo add elastic https://helm.elastic.co
 helm repo update
 ```
 
+For 3 Node cluster just run:
+```bash
+helm upgrade -i elasticsearch elastic/elasticsearch
+```
+
 Install elasticsearch:
 ```bash
 helm upgrade -i elasticsearch elastic/elasticsearch \

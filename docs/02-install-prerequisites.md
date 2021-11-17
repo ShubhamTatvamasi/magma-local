@@ -24,21 +24,11 @@ kubectl create ns orc8r
 kubens orc8r
 ```
 
-Install mysql and postgresql:
+Install postgresql:
 ```bash
-helm install mysql bitnami/mysql \
-  --set auth.rootPassword=password \
-  --set primary.livenessProbe.enabled=false \
-  --set primary.readinessProbe.enabled=false
-
 helm install postgresql bitnami/postgresql \
   --set postgresqlPassword=postgres \
   --set postgresqlDatabase=magma \
   --set livenessProbe.enabled=false \
   --set readinessProbe.enabled=false
-```
-
-update schema for magma:
-```bash
-kubectl exec -it mysql-0 -- mysql -u root --password=password < db_setup.sql
 ```

@@ -57,4 +57,3 @@ check if all the images are successfully loaded on kind cluster:
 docker exec -it kind-control-plane crictl images
 ```
 > Note: change your container name if it's not `kind-control-plane`
-

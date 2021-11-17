@@ -5,7 +5,34 @@ start a local kind kubernetes cluster:
 kind create cluster
 ```
 
-Also enable [LoadBalancer](https://kind.sigs.k8s.io/docs/user/loadbalancer/) for Kind cluster.
+Install Metal LB:
+```bash
+kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.11.0/manifests/namespace.yaml
+kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.11.0/manifests/metallb.yaml
+```
+
+check the IP range for kind docker network:
+```bash
+docker network inspect -f '{{.IPAM.Config}}' kind
+```
+
+Setup address pool:
+```yaml
+kubectl create -f - << EOF
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: metallb-system
+  name: config
+data:
+  config: |
+    address-pools:
+    - name: default
+      protocol: layer2
+      addresses:
+      - 172.18.255.200-172.18.255.250
+EOF
+```
 
 download magma docker images:
 ```bash

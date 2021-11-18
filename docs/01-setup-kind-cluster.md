@@ -36,18 +36,18 @@ EOF
 
 download magma docker images:
 ```bash
-docker pull magmacore/nginx:1.6.1
-docker pull magmacore/magmalte:1.6.1
-docker pull magmacore/controller:1.6.1
+docker pull docker.artifactory.magmacore.org/nginx:1.6.1
+docker pull docker.artifactory.magmacore.org/magmalte:1.6.1
+docker pull docker.artifactory.magmacore.org/controller:1.6.1
 
 docker pull shubhamtatvamasi/nginx:magma-master-certs.0.1.1
 ```
 
 load magma images on kind:
 ```bash
-kind load docker-image magmacore/nginx:1.6.1
-kind load docker-image magmacore/magmalte:1.6.1
-kind load docker-image magmacore/controller:1.6.1
+kind load docker-image docker.artifactory.magmacore.org/nginx:1.6.1
+kind load docker-image docker.artifactory.magmacore.org/magmalte:1.6.1
+kind load docker-image docker.artifactory.magmacore.org/controller:1.6.1
 
 kind load docker-image shubhamtatvamasi/nginx:magma-master-certs.0.1.1
 ```

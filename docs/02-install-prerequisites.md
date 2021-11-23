@@ -10,7 +10,7 @@ helm repo update
 
 Install cert-manager:
 ```bash
-helm install cert-manager jetstack/cert-manager \
+helm upgrade -i cert-manager jetstack/cert-manager \
   --create-namespace \
   --namespace cert-manager \
   --set installCRDs=true
@@ -26,7 +26,7 @@ kubens orc8r
 
 Install postgresql:
 ```bash
-helm install postgresql bitnami/postgresql \
+helm upgrade -i postgresql bitnami/postgresql \
   --set postgresqlPassword=postgres \
   --set postgresqlDatabase=magma \
   --set livenessProbe.enabled=false \

@@ -68,8 +68,8 @@ helm repo update
 install orc8r:
 ```bash
 helm upgrade -i orc8r orc8r/orc8r -f values.yaml \
-  --version=1.5.23 \
-  --set nginx.spec.hostname=controller.magmalocal.com
+  --set nginx.spec.hostname=controller.magmalocal.com \
+  --version=1.5.23
 ```
 
 create user:

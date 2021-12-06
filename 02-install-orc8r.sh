@@ -5,17 +5,25 @@ set -e
 CONTROLLER_IMAGE="docker.artifactory.magmacore.org/controller"
 CONTROLLER_TAG="1.6.1"
 DOMAIN_NAME=magmalocal.com
-CERTS_CHART=false
+CERTS_CHART=true
+
+# upgrade -i
+# template --debug --dry-run
 
 helm upgrade -i orc8r orc8r/cloud/helm/orc8r \
   --set nginx.image.repository=shubhamtatvamasi/nginx \
-  --set nginx.image.tag=magma-master-certs.0.1.1 \
+  --set nginx.image.tag=b4fbd71 \
   --set nginx.spec.hostname=controller.${DOMAIN_NAME} \
-  --set metrics.enabled=false \
   --set nms.certs.enabled=${CERTS_CHART} \
   --set certs.domainName=${DOMAIN_NAME} \
   --set certs.enabled=${CERTS_CHART} \
-  --set certs.create=${CERTS_CHART}
+  --set certs.create=${CERTS_CHART} \
+  --set metrics.enabled=true \
+  --set controller.podDisruptionBudget.enabled=true \
+  --set secrets.create=true \
+  --set secrets.docker.registry=docker.io \
+  --set secrets.docker.username=username \
+  --set secrets.docker.password=password
 
 declare -A orc8r_helm_charts
 

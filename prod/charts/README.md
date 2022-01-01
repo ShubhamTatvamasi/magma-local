@@ -19,7 +19,9 @@ helm upgrade -i elasticsearch elastic/elasticsearch \
   --set "extraEnvs[0].name=discovery.type" \
   --set "extraEnvs[0].value=single-node" \
   --set "extraEnvs[1].name=cluster.initial_master_nodes" \
-  --set "extraEnvs[1].value=null" \
+  --set "extraEnvs[1].value=null"
+
+
   --set "esJavaOpts=-Xmx4G -Xms4G" \
   --set "resources.limits.memory=10Gi"
 ```

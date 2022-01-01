@@ -26,6 +26,11 @@ helm upgrade -i elasticsearch elastic/elasticsearch \
   --set "resources.limits.memory=10Gi"
 ```
 
+Delete elasticsearch:
+```bash
+helm un elasticsearch
+kubectl delete pvc elasticsearch-master-elasticsearch-master-0
+```
 
 ### Research
 

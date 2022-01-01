@@ -1,5 +1,5 @@
 esJavaOpts: -Xmx2G -Xms2G
-imageTag: 7.12.0
+imageTag: 7.16.2
 minimumMasterNodes: 1
 replicas: 1
 resources:

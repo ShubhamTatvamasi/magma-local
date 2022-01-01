@@ -12,7 +12,7 @@ fi
 declare -A loadBalancer_services
 
 loadBalancer_services=(
-  # [fluentd]="fluentd"
+  [fluentd]="fluentd"
   [nginx-proxy]="master.nms"
   [orc8r-nginx-proxy]="api"
   [orc8r-clientcert-nginx]="controller"

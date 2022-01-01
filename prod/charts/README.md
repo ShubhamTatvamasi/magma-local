@@ -12,14 +12,16 @@ For 3 Node cluster just run:
 helm upgrade -i elasticsearch elastic/elasticsearch
 ```
 
-Install elasticsearch:
+Install elasticsearch for single node:
 ```bash
 helm upgrade -i elasticsearch elastic/elasticsearch \
   --set replicas=1 \
-  --set rbac.create=true \
-  --set roles.ml=false \
-  --set roles.remote_cluster_client=false \
-  --set antiAffinity=soft
+  --set "extraEnvs[0].name=discovery.type" \
+  --set "extraEnvs[0].value=single-node" \
+  --set "extraEnvs[1].name=cluster.initial_master_nodes" \
+  --set "extraEnvs[1].value=null" \
+  --set "esJavaOpts=-Xmx4G -Xms4G" \
+  --set "resources.limits.memory=10Gi"
 ```
 
 
